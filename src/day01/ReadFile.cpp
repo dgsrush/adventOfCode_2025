@@ -1,22 +1,6 @@
 #include"ReadFile.h"
 #include<cstring>
 
-ReadFile::ReadFile(const char *flname)
-{
-	if(flname == NULL)
-	{
-		ok = false;
-		return;
-	}
-	filename = flname;
-	ok = true;
-
-	inf.open(filename, std::ios::in);
-
-	if(!inf.good()) ok = false;
-	if(inf.fail()) ok = false;
-}
-
 ReadFile::ReadFile(const std::string &flname) : filename(flname)
 {
 	ok = true;
@@ -41,16 +25,12 @@ bool ReadFile::isEof()
 }
 
 //returns true if not EOF
-bool ReadFile::readLine(std::string &rr)
+bool ReadFile::readLine(std::string &ss)
 {
-	rr.clear();
+	ss.clear();
 	if(!ok) return false;
 	if(inf.eof()) return false;
-	char ss[5000];
-	inf.getline(ss, 5000);
-	int ii = strlen(ss);
-	if(ss[ii-1] == '\n') ss[ii-1] = '\0';
-	rr = ss;
+	std::getline(inf, ss);
 	return true;
 }
 

@@ -219,13 +219,13 @@ void Utils::removeAllSpaces(std::string &s)
 
 std::string & Utils::digitToString(int i)
 {
-	static std::array<std::string,10> strValues={"","1","2","3","4","5","6","7","8","9"};
+	static std::array<std::string,10> strValues = {"","1","2","3","4","5","6","7","8","9"};
 	return strValues[i];
 }
 
 char Utils::digitToChar(int i)
 {
-	static std::array<char,10> strValues={'0','1','2','3','4','5','6','7','8','9'};
+	static std::array<char,10> strValues = {'0','1','2','3','4','5','6','7','8','9'};
 	return strValues[i];
 }
 

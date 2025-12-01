@@ -6,8 +6,7 @@
 class ReadFile
 {
 public:
-	explicit ReadFile(const char *flname);
-	explicit ReadFile(const std::string &flname);
+	ReadFile(const std::string &flname);
 	~ReadFile();
 	bool readLine(std::string &);
 	void close();
