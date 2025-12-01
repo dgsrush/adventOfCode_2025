@@ -1,5 +1,4 @@
 #include"ReadFile.h"
-#include<cstring>
 
 ReadFile::ReadFile(const std::string &flname) : filename(flname)
 {
