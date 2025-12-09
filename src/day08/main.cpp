@@ -5,7 +5,6 @@
 #include<map>
 #include<algorithm>
 #include<cmath>
-#include<limits>
 #include"ReadFile.h"
 #include"Utils.h"
 
@@ -106,15 +105,9 @@ void part1(int loops)
 			junctions.push_back(ss);
 		}
 		else if(s1 != nullptr && s2 == nullptr)
-		{
-			s1->insert(indx1);
 			s1->insert(indx2);
-		}
 		else if(s2 != nullptr && s1 == nullptr)
-		{
 			s2->insert(indx1);
-			s2->insert(indx2);
-		}
 		else if(s1 != nullptr && s2 != nullptr && s1 != s2)
 		{
 			for(int i : *s2)
@@ -165,8 +158,6 @@ void part2()
 		int indx1 = it->second[0];
 		int indx2 = it->second[1];
 
-		answer2 = (ull)data[indx1].x * (ull)data[indx2].x;
-
 		set<int> *s1 = nullptr;
 		set<int> *s2 = nullptr;
 		for(set<int> &st : junctions)
@@ -186,22 +177,21 @@ void part2()
 			junctions.push_back(ss);
 		}
 		else if(s1 != nullptr && s2 == nullptr)
-		{
-			s1->insert(indx1);
 			s1->insert(indx2);
-		}
 		else if(s2 != nullptr && s1 == nullptr)
-		{
 			s2->insert(indx1);
-			s2->insert(indx2);
-		}
 		else if(s1 != nullptr && s2 != nullptr && s1 != s2)
 		{
 			for(int i : *s2)
 				s1->insert(i);
 			s2->clear();
 		}
-		if(isDone(cnt)) break;
+
+		if(isDone(cnt))
+		{
+			answer2 = (ull)data[indx1].x * (ull)data[indx2].x;
+			break;
+		}
 	}
 
 	cout << "PART2 answer = " << answer2 << endl;
